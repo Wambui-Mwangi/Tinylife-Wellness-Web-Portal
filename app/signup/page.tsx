@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import useSignup from '../hooks/useSignup';
@@ -10,7 +11,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [orgType, setOrgType] = useState('');
   const [website, setWebsite] = useState('');
-  const [phone_number, setPhoneNumber] = useState(''); // Fixed typo here
+  const [phone_number, setPhoneNumber] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const { user, handleSignup } = useSignup({
     username: username,
@@ -23,32 +24,31 @@ function Signup() {
 
   const [message, setMessage] = useState('');
 
-  const handleCreateUser = async (e: React.FormEvent<HTMLFormElement>) => { // Updated event type
+  const router = useRouter();
+
+  const handleCreateUser = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     if (!username || !email || !password || !orgType || !website || !phone_number) {
       console.error("please fill all the fields");
       return;
     }
-  
-    try {
-      const response: any = await handleSignup();
 
-      if (response && response.error) {
-        console.error('Error during signup:', response.error);
-        setMessage('Sign-up failed. Please check your details.');
-      } else {
-        setMessage('Sign-up Successful!');
-        setTimeout(() => {
-          setShowPopup(false);
-          setMessage('');
-        }, 5000);
-      }
-    } catch (error) {
-      console.error('Error during signup:', error);
-      setMessage('Sign-up failed. Please check your details.');
+    await handleSignup();
+
+    if (user) {
+      setMessage('Sign-up Successful!');
+      router.push('/login');
+    } else {
+      setMessage('Login failed. Phone number already exists');
     }
+
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
+
 
   return (
     <div className="max-w-full bg-white flex gap-x-20">
@@ -139,7 +139,7 @@ function Signup() {
           type="phoneNumber"
           id="phone_number"
           name="phone_number"
-          className= "w-[583px] h-[57px] rounded-[10px] border-2 border-black  border-opacity-30"
+          className= "w-[583px] h-[57px] rounded-[10px] border-2 border-black pl-10  border-opacity-30"
           value = {phone_number}
           onChange={(e) => setPhoneNumber(e.target.value)}
           required
@@ -151,16 +151,16 @@ function Signup() {
                   {message}
                 </p>
               )}
-              <button
-                type="submit"
-                className="bg-green-500 text-white px-4 py-3 mt-10 mb-5 rounded-md mt-5 pr-5 font-nunito"
-                style={{
-                  width: '200px',
-                  height: '70px',
-                  borderRadius: '10px',
-                  background: '#2DCD1F',
-                }}
-              >
+            <button
+                  type="submit"
+                  className="bg-green-500 text-white px-4 py-3 mt-10 mb-5 rounded-md mt-2 pr-5 font-nunito"
+                  style={{
+                    width: '200px',
+                    height: '70px',
+                    borderRadius: '10px',
+                    background: '#2DCD1F',
+                  }}
+                >
                 Sign Up
               </button>
               <Link href='/login'>

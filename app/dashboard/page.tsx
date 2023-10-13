@@ -23,11 +23,11 @@ function Dashboard() {
    <div className='flex'>
       <SideBar/>
       <div>
-        <h3 className='text-[23px] ml-[16%] text-green-800 font-bold mt-[7%] w-[180px]'>
+        <h3 className='text-[23px] ml-[17%] text-green-800 font-bold mt-[7%] w-[180px]'>
         <span className='greeting '>{getTimeOfDay()}</span>
         </h3>
       </div>
-    <div className='flex ml-[-8%] mt-[2%]'>
+    <div className='flex ml-[-8%] mt-[1%]'>
     <div className='flex mt-[10px]'>
       <div className='pt-10'>
       <div className='flex space-x-40'>           
@@ -83,7 +83,7 @@ function Dashboard() {
       </div>
       </div>
 
-     <div className="flex mt-[3%] h-[57px] ">
+     <div className="flex mt-[2%] h-[57px] ">
       <p className='text-black font-bold text-[25px]'>Average Blood Lead Levels in Nairobi Wards</p>
 </div>
       <div className="">
