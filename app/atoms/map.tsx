@@ -142,16 +142,16 @@ export default function NairobiMap() {
     if (screenWidth >= 1024) {
       return {
         width: '100%', 
-        height: '550px', 
+        height: '290px', 
       };
     } else if (screenWidth <= 1024) {
       return {
         width: '100%',
-        height: '550px',
+        height: '150px',
       };
     } else {
       return {
-        width: '100%', // Default width for smaller screens
+        width: '100%',
         height: '100%',
       };
     }
