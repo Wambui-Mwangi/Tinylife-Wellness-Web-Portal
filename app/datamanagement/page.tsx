@@ -27,7 +27,7 @@ function DataUpload() {
   const [missingColumns, setMissingColumns] = useState<string[]>([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 15; 
+  const itemsPerPage = 10; 
 
   const totalFiles = files.length;
   const totalPages = Math.ceil(totalFiles / itemsPerPage);
@@ -133,15 +133,15 @@ function DataUpload() {
   };
   return (
     
-    <div className='flex ml-[10px]'>
+    <div className='flex ml-[10px] mb-0'>
     <SideBar/>
-    <div className="flex flex-col md:flex-row data-upload-container ml-[40px]">
+    <div className="flex flex-col gap-20 md:flex-row data-upload-container ml-[40px] mb-0">
       <div className="md:w-1/2 md:pl-[119px] upload-files">
-        <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-4xl mt-[65px]">
+        <h1 className="font-nunito font-semibold text-2xl sm:text-2xl md:text-2xl mt-5 ">
           Data Management
         </h1>
 
-        <h2 className="font-bold text-2xl mt-[80px]">Uploaded Files</h2>
+        <h2 className="font-bold text-2xl mt-[15px]">Uploaded Files</h2>
         <ol>
         {filesToDisplay.map((fileHash, index) => (
             <li key={index} className="flex items-center">
@@ -162,14 +162,14 @@ function DataUpload() {
         />
       </div>
 
-      <div className="main-content w-full md:w-[20%]">
-        <div className="mt-[185px] ml-30 upload-header ">
+      <div className="main-content  md:w-[20%]">
+        <div className="mt-[70px] ml-30 upload-header ">
           <h1 className="font-bold text-2xl">Upload Files</h1>
-          <p>Only Uploaded csv files with columns such as Location, Sources of water, Proximity to industries, Number of garages in an area, Proximity to dumpsite, Presence of open sewage, and Past cases of lead poisoning are accepted.</p>
+          <p className='uploaded'>Only Uploaded csv files with columns such as Location, Sources of water, Proximity to industries, Number of garages in an area, Proximity to dumpsite, Presence of open sewage, and Past cases of lead poisoning are accepted.</p>
           <div className="container-for-button-container ">
-            <div className="button-container bg-black p-5 pb-20 rounded-xl mt-5 mb-9 flex flex-col items-center w-full">
+            <div className="button-container bg-black p-5 pb-20 rounded-xl mt-5 mb-9 flex flex-col items-center w-100 ">
               <label htmlFor="file-input" className="file-upload-label">
-                <div className="pl-10 file-upload-icon cursor-pointer ml-[10px] mt-7">
+                <div className="pl-10 file-upload-icon cursor-pointer ml-[10px] mt-7 ">
                   <CloudUploadIcon style={{ width: '82px', height: '81px', color: 'green' }} />
                 </div>
                 <p className="text-white mt-5">Drag csv files to upload</p>
@@ -182,7 +182,7 @@ function DataUpload() {
               </label>
               <button
                 onClick={handleUploadButtonClick}
-                className="w-40 h-14 bg-white text-black border-2 border-green-500 rounded-lg mt-10 pl-2"
+                className="w-40 h-14 bg-white text-black border-2 border-green-500 rounded-lg mt-1 pl-2"
               >
                 Upload Files
               </button>
@@ -190,8 +190,8 @@ function DataUpload() {
           </div>
           <button
             onClick={handleUpload}
-            className="ml-[100px] w-[150px] h-[50px] text-white px-4 py-3 rounded-md mt-2 pr-5 font-nunito bg-neza-green-200 bg-[#2DCD1F]"
-          >
+            className="btn done ml-[80px] w-[180px] h-[50px] text-white px-4 py-3 pl-10 rounded-md pr-10 font-nunito bg-neza-green-200 bg-[#2DCD1F] "
+           id='done'>
             Done
           </button>
         </div>

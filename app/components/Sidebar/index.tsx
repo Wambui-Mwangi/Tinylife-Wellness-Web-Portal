@@ -73,7 +73,6 @@ const SideBar = () => {
     "w-20": toggleCollapse,
     "items-center": toggleCollapse,
   });
-
   return (
     <div className={sidebarClasses}>
       <div className="flex flex-col pl-3">
