@@ -136,10 +136,31 @@ export default function NairobiMap() {
 
     fetchData();
   }, []);
+  const getContainerStyles = () => {
+    const screenWidth = window.innerWidth;
 
+    if (screenWidth >= 1024) {
+      return {
+        width: '100%', 
+        height: '550px', 
+      };
+    } else if (screenWidth <= 1024) {
+      return {
+        width: '100%',
+        height: '550px',
+      };
+    } else {
+      return {
+        width: '100%', // Default width for smaller screens
+        height: '100%',
+      };
+    }
+  };
+
+  const containerStyles = getContainerStyles();
   return (
     <div>
-      <div style={{ height: '550px', width: '100%' }}>
+      <div style={containerStyles} className="map-container">
         <MapContainer
           center={mapCenter}
           zoom={13}
@@ -169,4 +190,4 @@ export default function NairobiMap() {
       </div>
     </div>
   );
-}
+          }
