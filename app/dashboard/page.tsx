@@ -85,7 +85,8 @@ function Dashboard() {
               <p className='text-black font-bold text-[25px]'>Average Blood Lead Levels in Nairobi Wards</p>
             </div>
             <div className="map-container">
-              <NairobiMap />
+             
+              <NairobiMap/>
             </div>
           </div>
         </div>
