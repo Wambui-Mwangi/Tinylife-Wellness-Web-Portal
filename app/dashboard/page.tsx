@@ -20,18 +20,18 @@ function Dashboard() {
     }
   }
   return (
-   <div className='flex'>
+   <div className='flex' >
       <SideBar/>
-      <div>
+      <div className='overall'>
         <h3 className='text-[23px] ml-[17%] text-green-800 font-bold mt-[7%] w-[180px]'>
         <span className='greeting '>{getTimeOfDay()}</span>
         </h3>
       </div>
-    <div className='flex ml-[-8%] mt-[1%]'>
+    <div className='flex ml-[-8%] mt-[1%] '>
     <div className='flex mt-[10px]'>
       <div className='pt-10'>
-      <div className='flex space-x-40'>           
-      <div>
+      <div className='flex space-x-40' id='all'>           
+      <div className='child'>
         <h3 className='text-[23px] font-bold'>Children</h3>
         <div className=" flex pt-[12%] space-x-5 mt-5 pl-[5%] w-[380px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
           <div className='text-green-800 text-2xl '>
@@ -43,7 +43,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div>
+      <div className='pregnancies'>
         <h3 className='text-[23px] font-bold'>Pregnancies</h3>
         <div className=" flex pt-[12%] space-x-5 mt-5 pl-[2%] w-[380px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
           <div className='text-6xl text-green-800'>
@@ -55,7 +55,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div>
+      <div className='variables'>
         <h3 className='text-[20px] font-bold'>Variables considered</h3>
         <div className="mt-1 pl-[5%] w-[400px] mt-5 h-[161px] bg-blue-200  p-[10px] rounded-[10px] text-[18px] font-normal font-['Nunito']">
           <div>
@@ -86,12 +86,14 @@ function Dashboard() {
      <div className="flex mt-[2%] h-[57px] ">
       <p className='text-black font-bold text-[25px]'>Average Blood Lead Levels in Nairobi Wards</p>
 </div>
-      <div className="">
+      <div className="nairobiMap">
         <NairobiMap />
       </div>
       </div>
     </div>
     </div>
+   
+
     </div>
   );
 }
