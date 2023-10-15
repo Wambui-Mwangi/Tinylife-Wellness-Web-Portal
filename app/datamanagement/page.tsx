@@ -17,7 +17,7 @@ interface FileData {
 }
 function DataUpload() {
   const { files } = useGetFiles();
-  const hashFiles = Array.isArray(files) ? files.map((file) => file.file_hash) : [];
+  const uniqueLocations = [...new Set(files.map((file) => file.location))];
   const [selectedFile, setSelectedFile] = useState<File>();
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; timestamp: string; file_hash: string; }[]>([]);
   const [fileContents, setFileContents] = useState<string[]>([]);
@@ -31,15 +31,17 @@ function DataUpload() {
 
   const totalFiles = files.length;
   const totalPages = Math.ceil(totalFiles / itemsPerPage);
-  const actualTotalPages = Math.min(totalPages, 3); 
+  const actualTotalPages = Math.min(totalPages, 5); 
 
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const reversedFiles = [...files].reverse();
   const uniqueFileHashes = [...new Set(reversedFiles.map((file) => file.file_hash))];
-  const filesToDisplay = uniqueFileHashes.slice(startIndex, endIndex);
+  const filesToDisplay = uniqueLocations.slice(startIndex, endIndex);
+ 
 
+  
   const handlePageChange = (event: any, page: React.SetStateAction<number>) => {
     setCurrentPage(page);
   };
@@ -143,14 +145,12 @@ function DataUpload() {
 
         <h2 className="font-bold text-2xl mt-[15px]">Uploaded Files</h2>
         <ol>
-        {filesToDisplay.map((fileHash, index) => (
-            <li key={index} className="flex items-center">
-              {index + 1 + startIndex}. {fileHash}
-              <div className="icon-container ml-2">
-               
-              </div>
-            </li>
-          ))}
+        {filesToDisplay.map((location, index) => (
+  <li key={index} className="flex items-center">
+    {index + 1 + startIndex}. {location}
+    <div className="icon-container ml-2"></div>
+  </li>
+))}
         </ol>
         <Pagination
         count={actualTotalPages}
