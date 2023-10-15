@@ -31,7 +31,7 @@ function DataUpload() {
 
   const totalFiles = files.length;
   const totalPages = Math.ceil(totalFiles / itemsPerPage);
-  const actualTotalPages = Math.min(totalPages, 5); 
+  const actualTotalPages = Math.min(totalPages, 6); 
 
 
   const startIndex = (currentPage - 1) * itemsPerPage;
