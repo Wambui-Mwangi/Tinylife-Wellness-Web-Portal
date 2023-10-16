@@ -37,7 +37,6 @@ function DataUpload() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const reversedFiles = [...files].reverse();
-  const uniqueFileHashes = [...new Set(reversedFiles.map((file) => file.file_hash))];
   const filesToDisplay = uniqueLocations.slice(startIndex, endIndex);
  
 
