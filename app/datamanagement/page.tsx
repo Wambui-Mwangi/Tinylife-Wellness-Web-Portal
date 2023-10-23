@@ -28,12 +28,12 @@ function DataUpload() {
   const itemsPerPage = 10;
   const totalFiles = files.length;
   const totalPages = Math.ceil(totalFiles / itemsPerPage);
-  const actualTotalPages = Math.min(totalPages, 1);
+  const actualTotalPages = Math.min(totalPages, 2);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const reversedFiles = [...files].reverse();
   const uniqueFileHashes = [...new Set(reversedFiles.map((file) => file.file_hash))];
-  
+
   // Filter out files with empty file_name
   const filesToDisplay = reversedFiles
     .filter((file) => file.file_name !== "")
@@ -81,6 +81,8 @@ function DataUpload() {
               "presence of open sewage",
               "past cases of lead poisoning",
               "women and children population",
+              "lead blood levels",
+              "file_name",
             ];
             const missingCols = requiredColumns.filter(
               (column) => !data[0] || !Object.keys(data[0]).includes(column)
