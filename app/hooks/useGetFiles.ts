@@ -12,6 +12,8 @@ interface FilesData {
   past_cases_of_lead_poisoning: number;
   women_and_children_population: number;
   file_hash: string;
+  lead_blood_levels:string;
+  file_name:string;
 }
 
 const useGetFiles = () => {
