@@ -125,7 +125,7 @@ function DataUpload() {
       <SideBar />
       <div className="flex flex-col gap-20 md:flex-row data-upload-container ml-[40px] mb-0">
         <div className="md:w-1/2 md:pl-[119px] upload-files">
-          <h1 className="font-nunito font-semibold text-2xl sm:text-2xl md:text-2xl mt-5 ">
+          <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-3xl mt-5 ">
             Data Management
           </h1>
           <h2 className="font-bold text-2xl mt-[15px]">Uploaded Files</h2>
