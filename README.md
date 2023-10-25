@@ -7,7 +7,6 @@
 - [Built With](#built-with)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Contacts](#contacts)
 ### Built With
 - Next.js
 - On Ubuntu 20.4
