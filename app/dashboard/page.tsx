@@ -19,6 +19,7 @@ function Dashboard() {
       return 'Good evening';
     }
   }
+  
   return (
     <div className='flex'>
       <SideBar />
