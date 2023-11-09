@@ -126,6 +126,7 @@ try{
 catch(error:any){
     return error.message
 }
+
 }
 
 export const uploadfile = async (file: string | Blob) => {
