@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import {LatLngTuple, LatLngBoundsExpression} from 'leaflet';
-import L from 'leaflet'
+import { divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 export default function NairobiMap() {
@@ -103,91 +102,55 @@ export default function NairobiMap() {
     { lat: -1.457725, lng: 36.978503, name: 'Athi River', percentage: '34' },
     { lat: -1.359227, lng: 36.937984, name: 'Syokimau', percentage: '23' },
     { lat: -1.475289, lng:  36.96201, name: 'Kitengela', percentage: '45' },
-    { lat: -1.038757, lng: 37.083375, name: 'Thika', percentage: '45' },
   ]);
 
-  const mapCenter: LatLngTuple = [-1.286389, 36.817223];
-  const nairobiBounds: LatLngBoundsExpression = [
-    [-1.4642, 36.6544],
-    [-1.1595, 37.0811],
-  ];
-
-  const redIcon = new L.Icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41],
-  });
+  const [markerColors, setMarkerColors] = useState<string[]>([]); 
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://nezabackend-2a2e9782ab7f.herokuapp.com/api/lead-poisoning-locations');
-        const data = await response.json();
+    const updatedMarkerColors: string[] = leadPoisoningLocations.map((location) => {
+      return getMarkerColor(location.percentage);
+    });
+    setMarkerColors(updatedMarkerColors); 
+  }, [leadPoisoningLocations]);
 
-        setLeadPoisoningLocations(data.locations);
+  const getMarkerColor = (percentage: any): string => {
+    const maxIntensity = 345;
+    const minIntensity = 10;
 
-      } catch (error) {
-        console.error('Error fetching lead poisoning locations data:', error);
-      }
-    };
+    const intensity = maxIntensity - (maxIntensity - minIntensity) * (percentage / 100);
+    const intensityHex = Math.floor(intensity).toString(16).padStart(2, '0');
+    const markerColor = `#${intensityHex}0000`;
 
-    fetchData();
-  }, []);
-  const getContainerStyles = () => {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth >= 1024) {
-      return {
-        width: '100%', 
-        height: '290px', 
-      };
-    } else if (screenWidth <= 1024) {
-      return {
-        width: '100%',
-        height: '150px',
-      };
-    } else {
-      return {
-        width: '100%',
-        height: '100%',
-      };
-    }
+    return markerColor;
   };
 
-  const containerStyles = getContainerStyles();
   return (
-    <div>
-      <div style={containerStyles} className="map-container">
-        <MapContainer
-          center={mapCenter}
-          zoom={13}
-          style={{ height: '100%', width: '100%' }}
-          maxBounds={nairobiBounds}
-          minZoom={10}
-          maxZoom={30}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={mapCenter}>
-            <Popup>Nairobi, Kenya</Popup>
-          </Marker>
-          {leadPoisoningLocations.map((location, index) => (
-            <Marker key={index} position={[location.lat, location.lng]} icon={redIcon}>
+    <div style={{ height: '630px', width: '100%' }}>
+      <MapContainer center={[-1.286389, 36.817223]} zoom={13} style={{ height: '100%', width: '100%' }}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {leadPoisoningLocations.map((location, index) => {
+          const icon = divIcon({
+            className: 'custom-icon',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            html: `<div style="background-color: ${markerColors[index]}; width: 20px; height: 41px; border-radius:30px; border-bottom-left-radius: 5px; border-bottom-right-radius: 190px;"></div>`,
+            popupAnchor: [0, -30],
+          });
+
+          
+
+          return (
+            <Marker key={index} position={[location.lat, location.lng]} icon={icon}>
               <Popup>
                 <div>
                   <h2>{location.name}</h2>
-                  <p>Average Blood Lead Level: {location.percentage} %</p>
+                  <p>Average Blood Lead Level: {location.percentage}%</p>
                 </div>
               </Popup>
             </Marker>
-          ))}
-        </MapContainer>
-      </div>
+          );
+        })}
+      </MapContainer>
     </div>
   );
-          }
+}

@@ -43,7 +43,7 @@ function Login() {
     <div className="max-w-full bg-white flex gap-x-20">
       <Image
         src="/one.jpeg"
-        width={530}
+        width={548}
         height={60}
         alt="logo"
         className='h-[100%]'
@@ -83,7 +83,7 @@ function Login() {
               </div>
               <div className="">
                 {showPopup && (
-                  <p className={`text-${message.includes('Successful') ? 'green' : 'red'} text-xl ml-[14%] font-normal font-['Nunito']`}>
+                  <p className={`text-${message.includes('Successful') ? 'green' : 'red'} text-xl ml-[1%] mb-[2%] font-normal font-['Nunito']`}>
                     {message}
                   </p>
                 )}

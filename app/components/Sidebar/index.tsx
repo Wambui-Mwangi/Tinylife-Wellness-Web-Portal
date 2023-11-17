@@ -24,19 +24,18 @@ const SideBar = () => {
   ];
 
   const [toggleCollapse, setToggleCollapse] = useState(false);
-  const [activeLink, setActiveLink] = useState("/dashboard"); // Set the default active link.
+  const [activeLink, setActiveLink] = useState("/dashboard");
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
   const handleActiveLink = (link: string) => {
     setActiveLink(link);
-    localStorage.setItem("activeLink", link); // Store the active link in local storage
+    localStorage.setItem("activeLink", link); 
   };
 
-  // Retrieve the previously active link on component mount.
   useEffect(() => {
     const storedActiveLink = localStorage.getItem("activeLink");
     if (storedActiveLink) {
-      handleActiveLink(storedActiveLink); // Set the active link using the function
+      handleActiveLink(storedActiveLink); 
     }
   }, []);
 
@@ -46,7 +45,7 @@ const SideBar = () => {
       {
         "hover:text-green-500": !toggleCollapse && activeLink !== menu.link,
         "mr-2": toggleCollapse,
-        "text-yellow-500": activeLink === menu.link,
+        "text-green-500": activeLink === menu.link,
         "text-black": activeLink !== menu.link,
       }
     );
@@ -54,21 +53,19 @@ const SideBar = () => {
 
   const handleMouseEnter = (link: string) => {
     if (toggleCollapse && link) {
-      handleActiveLink(link); // Set the active link when mouse enters
+      handleActiveLink(link); 
     }
   };
 
   const handleMouseLeave = () => {
     if (toggleCollapse) {
-      // Handle mouse leave if needed
     }
   };
 
   const handleLogoutConfirmation = () => {
-    // Implement your logout confirmation logic here.
   };
 
-  const sidebarClasses = classNames("h-screen w-[120px] mr-[3%] ml-[-1%] pt-20 pb-4 bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
+  const sidebarClasses = classNames("h-screen w-[130px] mr-[3%] ml-[-1%] pt-20 pb-4 pl-[1%] bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
     "w-80": !toggleCollapse,
     "w-20": toggleCollapse,
     "items-center": toggleCollapse,
@@ -81,7 +78,7 @@ const SideBar = () => {
             <Image
               src="/LOGO.png"
               alt="Logo"
-              width={toggleCollapse ? 40 : 60}
+              width={toggleCollapse ? 40 : 70}
               height={toggleCollapse ? 28 : 56}
               className='mt-10 ml-[-2%]'
             />
@@ -99,8 +96,8 @@ const SideBar = () => {
               >
                 <div className="mr-5">
                   {React.cloneElement(icon, {
-                    className: classNames("w-22 h-23 flex-shrink-0", {
-                      "text-yellow-500": activeLink === link,
+                    className: classNames("w-[30px] h-24 flex-shrink-0", {
+                      "text-green-500": activeLink === link,
                     }),
                   })}
                 </div>
@@ -116,10 +113,10 @@ const SideBar = () => {
                 className={`group flex items-center gap-5 p-2 hover:bg-hoverblue rounded-md mt-1`}
                 onClick={handleLogoutConfirmation}
               >
-                <span className={classNames({ "text-yellow-500": activeLink === "/logOut" })}>
+                <span className={classNames({ "text-green-500": activeLink === "/logOut" })}>
                   {React.cloneElement(<LogoutIcon />, {
-                    className: classNames("w-30 h-23 flex-shrink-0", {
-                      "text-yellow-500": activeLink === "/logOut",
+                    className: classNames("w-[30px] h-24 flex-shrink-0", {
+                      "text-green-500": activeLink === "/logOut",
                     }),
                   })}
                 </span>
