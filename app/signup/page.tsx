@@ -54,7 +54,7 @@ function Signup() {
     <div className="max-w-full bg-white flex gap-x-20">
       <Image
       src="/one.jpeg"
-      width={530}
+      width={548}
       height={60}
       alt="logo"
       className='h-[100%]'/>
@@ -153,7 +153,7 @@ function Signup() {
               )}
             <button
                   type="submit"
-                  className="bg-green-500 text-white px-4 py-3 mt-10 mb-5 rounded-md mt-2 pr-5 font-nunito"
+                  className="bg-green-500 text-white px-4 py-3 mt-[8%] mb-5 rounded-md mt-2 pr-5 font-nunito"
                   style={{
                     width: '200px',
                     height: '70px',

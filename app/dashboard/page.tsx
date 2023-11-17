@@ -24,17 +24,17 @@ function Dashboard() {
     <div className='flex'>
       <SideBar />
       <div>
-        <h3 className='text-[23px] ml-[30%] text-green-800 font-bold mt-[7%] w-[180px]'>
+        <h3 className='text-[23px] ml-[16%] text-green-800 font-bold mt-[7%] w-[180px]'>
           <span className='greeting '>{getTimeOfDay()}</span>
         </h3>
       </div>
-      <div className='flex ml-[-11%] mt-[1%]'>
+      <div className='flex ml-[-9%] mt-[1%]'>
         <div className='flex mt-[10px]'>
           <div className='pt-10'>
-            <div className='flex space-x-10'>
+            <div className='flex space-x-20'>
               <div>
                 <h3 className='text-[23px] font-bold'>Children</h3>
-                <div className="flex pt-[12%] space-x-3 mt-5 pl-[3%] w-[280px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+                <div className="flex pt-[12%] space-x-3 mt-5 pl-[3%] pr-[4%] w-[400px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
                   <div className='text-green-800 text-2xl '>
                     <Image src="/girl.png" width={50} height={500} alt="logo" className="w-[70px] mt-[55%]" />
                   </div>
@@ -46,7 +46,7 @@ function Dashboard() {
               </div>
               <div>
                 <h3 className='text-[23px] font-bold'>Pregnancies</h3>
-                <div className="flex pt-[12%] space-x-5 mt-5 pl-[3%] w-[280px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+                <div className="flex pt-[12%] space-x-5 mt-5 pl-[3%] pr-[4%] w-[400px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
                   <div className='text-6xl text-green-800'>
                     <Image src="/embryo.png" width={50} height={500} alt="logo" className="w-[70px] mt-[75%]" />
                   </div>
@@ -58,7 +58,7 @@ function Dashboard() {
               </div>
               <div>
                 <h3 className='text-[20px] font-bold'>Variables considered</h3>
-                <div className="mt-1 pl-[3%] w-[200px] mt-5 h-[161px] bg-blue-200  p-[10px] rounded-[10px] text-[10px] font-normal font-['Nunito']">
+                <div className="pl-[3%] w-[400px] mt-[7%] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text-[18px] font-normal font-['Nunito']">
                   <div>
                     <div className='text-green-800 flex m-[5px] space-x-3'>
                       <FactoryIcon />
@@ -85,9 +85,17 @@ function Dashboard() {
             <div className="flex mt-[2%] h-[7px] ">
               <p className='text-black font-bold text-[25px]'>Average Blood Lead Levels in Nairobi Wards</p>
             </div>
-            <div className="map-container">
-             
+            <div className="map-container">            
               <NairobiMap/>
+            </div>
+            <div className='bg-black pl-[13%] pt-[1%] pb-[1%] w-[400px] rounded-[20px] mt-[-35%] ml-[90%]'>
+              <p className='text-red-900 font-bold text-[25px]'>BLL above 60% </p>
+            </div>
+            <div className='bg-black pl-[13%] pt-[1%] pb-[1%] w-[400px] rounded-[20px] mt-[5%] ml-[90%]'>
+              <p className='text-red-500 font-bold text-[20px]'>BLL above 50% below 60% </p>
+            </div>
+            <div className='bg-black pl-[13%] pt-[1%] pb-[1%] w-[400px] rounded-[20px] mt-[5%] ml-[90%]'>
+              <p className='text-red-300 font-bold text-[20px]'>BLL below 50% </p>
             </div>
           </div>
         </div>
