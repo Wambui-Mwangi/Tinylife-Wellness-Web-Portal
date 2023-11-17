@@ -128,6 +128,9 @@ function DataUpload() {
           <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-3xl mt-5 ">
             Data Management
           </h1>
+          <div className="bg-white shadow-md rounded-md border-green-500 w-1/2 h-1/2 flex flex-col justify-center items-center mt-10" style={{
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
+          }}>
           <h2 className="font-bold text-2xl mt-[15px]">Uploaded Files</h2>
           <ol>
             {filesToDisplay.map((file, index) => (
@@ -145,8 +148,18 @@ function DataUpload() {
             className="mt-4"
           />
         </div>
+        </div>
+
+       
         <div className="main-content  md:w-[20%]">
+       
           <div className="mt-[70px] ml-30 upload-header ">
+            
+          <div className="bg-white shadow-md rounded-md border-green-500 mt-15" style={{
+  paddingLeft: '20px', /* Padding for the left side */
+  paddingRight: '20px', /* Padding for the right side */
+  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
+}}>
             <h1 className="font-bold text-2xl">Upload Files</h1>
             <p className='uploaded'>Only Uploaded csv files with columns such as Location, Sources of water, Proximity to industries, Number of garages in an area, Proximity to dumpsite, Presence of open sewage, and Past cases of lead poisoning are accepted.</p>
             <div className="container-for-button-container ">
@@ -186,6 +199,7 @@ function DataUpload() {
             isOpen={showMissingColumnsModal}
             missingColumns={missingColumns}
             onClose={handleMissingColumnsModalClose} />
+        </div>
         </div>
       </div>
     </div>
