@@ -137,6 +137,8 @@ export default function NairobiMap() {
             popupAnchor: [0, -30],
           });
 
+          
+
           return (
             <Marker key={index} position={[location.lat, location.lng]} icon={icon}>
               <Popup>
