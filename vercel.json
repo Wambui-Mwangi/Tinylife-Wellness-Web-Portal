@@ -15,12 +15,6 @@
     ],
     "env": {
       "NODE_ENV": "production"
-    },
-    "build": {
-      "env": {
-        "CI": "true"
-      },
-      "command": "npm install --force && npm run build"
     }
   }
   
