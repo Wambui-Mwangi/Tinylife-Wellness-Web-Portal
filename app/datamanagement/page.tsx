@@ -150,7 +150,6 @@ function DataUpload() {
         </div>
         </div>
 
-       
         <div className="main-content  md:w-[20%]">
        
           <div className="mt-[70px] ml-30 upload-header ">
