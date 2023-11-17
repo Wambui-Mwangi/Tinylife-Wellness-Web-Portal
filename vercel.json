@@ -1,0 +1,26 @@
+{
+    "name": "Tinylife-Wellness-Web-Portal",
+    "version": 2,
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "build": {
+      "env": {
+        "CI": "true"
+      },
+      "command": "npm install --legacy-peer-deps && npm run build"
+    }
+  }
+  
