@@ -34,19 +34,24 @@ function Dashboard() {
             <div className='flex space-x-20'>
               <div>
                 <h3 className='text-[23px] font-bold'>Children</h3>
-                <div className="flex pt-[12%] space-x-3 mt-5 pl-[3%] pr-[4%] w-[400px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+                <div className="flex pt-[12%] space-x-3 mt-5 pl-[3%] pr-[4%] w-[400px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px] " style={{
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
+          }}>
                   <div className='text-green-800 text-2xl '>
                     <Image src="/girl.png" width={50} height={500} alt="logo" className="w-[70px] mt-[55%]" />
                   </div>
-                  <div className='text-black mt-[13%] mb-[3%] '>
+
+                  <div className='text-black mt-[13%] mb-[3%] ' >
                     <h3>No. of children at risk in Nairobi</h3>
                     <h1 className='text-[20px] font-bold'>154,651</h1>
                   </div>
                 </div>
               </div>
-              <div>
+              <div >
                 <h3 className='text-[23px] font-bold'>Pregnancies</h3>
-                <div className="flex pt-[12%] space-x-5 mt-5 pl-[3%] pr-[4%] w-[400px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+                <div className="flex pt-[12%] space-x-5 mt-5 pl-[3%] pr-[4%] w-[400px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]" style={{
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
+          }}>
                   <div className='text-6xl text-green-800'>
                     <Image src="/embryo.png" width={50} height={500} alt="logo" className="w-[70px] mt-[75%]" />
                   </div>
@@ -58,7 +63,9 @@ function Dashboard() {
               </div>
               <div>
                 <h3 className='text-[20px] font-bold'>Variables considered</h3>
-                <div className="pl-[3%] w-[400px] mt-[7%] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text-[18px] font-normal font-['Nunito']">
+                <div className="pl-[3%] w-[400px] mt-[7%] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text-[18px] font-normal font-['Nunito']" style={{
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
+          }}>
                   <div>
                     <div className='text-green-800 flex m-[5px] space-x-3'>
                       <FactoryIcon />

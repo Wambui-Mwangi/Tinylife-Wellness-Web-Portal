@@ -128,11 +128,11 @@ function DataUpload() {
           <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-3xl mt-5 ">
             Data Management
           </h1>
-          <div className="bg-white shadow-md rounded-md border-green-500 w-1/2 h-1/2 flex flex-col justify-center items-center mt-10" style={{
+          <div className="bg-white shadow-md rounded-md border-green-500 w-1/2 h-1/2 flex flex-col mt-10" style={{
             boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
           }}>
-          <h2 className="font-bold text-2xl mt-[15px]">Uploaded Files</h2>
-          <ol>
+          <h2 className="font-bold text-2xl mt-[15px] ml-[10px]">Uploaded Files</h2>
+          <ol className="ml-[10px]">
             {filesToDisplay.map((file, index) => (
               <li key={index} className="flex items-center">
                 {index + 1 + startIndex}. {file.file_name}
@@ -154,9 +154,9 @@ function DataUpload() {
        
           <div className="mt-[70px] ml-30 upload-header ">
             
-          <div className="bg-white shadow-md rounded-md border-green-500 mt-15" style={{
-  paddingLeft: '20px', /* Padding for the left side */
-  paddingRight: '20px', /* Padding for the right side */
+          <div className="bg-white shadow-md rounded-md border-green-500 mt-15 w-[120%] h-[100%] pl-[10%] pr-[10%] " style={{
+  // paddingLeft: '20px', /* Padding for the left side */
+  // paddingRight: '20px', /* Padding for the right side */
   boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
 }}>
             <h1 className="font-bold text-2xl">Upload Files</h1>
@@ -185,7 +185,7 @@ function DataUpload() {
             </div>
             <button
               onClick={handleUpload}
-              className="btn done ml-[80px] w-[180px] h-[50px] text-white px-4 py-3 pl-10 rounded-md pr-10 font-nunito bg-neza-green-200 bg-[#2DCD1F] "
+              className="btn done ml-[80px] w-[180px] h-[50px] text-white px-4 py-3 pl-10 rounded-md pr-10 font-nunito bg-neza-green-200 bg-[#2DCD1F]  mb-[10%] "
              id='done'>
               Done
             </button>

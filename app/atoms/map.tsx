@@ -50,9 +50,9 @@ export default function NairobiMap() {
     { lat: -1.31629833333, lng: 36.8811983333, name: 'Pipeline', percentage: '12' },
     { lat: -1.31043197, lng: 36.8960322, name: 'Kware', percentage: '55' },
     { lat: -1.25501220915, lng: 36.8822600693, name: 'Kariobangi North', percentage: '30' },
-    { lat: -1.29816, lng: 36.88927, name: 'Dandora Area I', percentage: '45' },
-    { lat: -1.28452, lng: 36.88536, name: 'Dandora Area II', percentage: '47' },
-    { lat: -1.2820, lng: 36.7140, name: 'Dandora Area III', percentage: '23' },
+    { lat: -1.29816, lng: 36.88927, name: 'Dandora Area I', percentage: '65' },
+    { lat: -1.28452, lng: 36.88536, name: 'Dandora Area II', percentage: '77' },
+    { lat: -1.2820, lng: 36.7140, name: 'Dandora Area III', percentage: '63' },
     { lat: -1.28097, lng: 36.88233, name: 'Dandora Area IV', percentage: '23' },
     { lat: 1.2660, lng: 36.9219, name: 'Kayole North', percentage: '21' },
     { lat: -1.276162, lng: 36.913794, name: 'Kayole Central', percentage: '56' },
@@ -88,7 +88,7 @@ export default function NairobiMap() {
     { lat: -1.3277100, lng: 36.7836000, name: 'Ngei', percentage: '12' },
     { lat: -1.2668038395293, lng: 36.848135618581, name: 'Mlango Kubwa', percentage: '43' },
     { lat: -1.2525036534071, lng: 36.878572857815, name: 'Kiamaiko', percentage: '23' },
-    { lat: -1.312217, lng: 36.791376, name: 'Kibra', percentage: '34' },
+    { lat: -1.312217, lng: 36.791376, name: 'Kibra', percentage: '64' },
     { lat: -1.2619, lng: 36.8585, name: 'Mathare South', percentage: '21' },
     { lat: -1.30332, lng: 36.8315224, name: 'Embakasi Central', percentage: '23' },
     { lat: -1.2997, lng: 36.9167, name: 'Embakasi East', percentage: '45' },
@@ -97,20 +97,20 @@ export default function NairobiMap() {
     { lat: -1.28478, lng: 36.833774, name: 'Kamukunji', percentage: '13' },
     { lat: -1.2959673, lng: 36.8724832, name: 'Makadara', percentage: '45' },
     { lat: -1.284457, lng: 36.824504, name: 'Starehe', percentage: '65' },
-    { lat: -1.268264, lng: 36.811121, name: 'Westlands', percentage: '37' },
+    { lat: -1.268264, lng: 36.811121, name: 'Westlands', percentage: '27' },
     { lat: -1.145703, lng: 36.964853, name: 'Ruiru', percentage: '19' },
     { lat: -1.457725, lng: 36.978503, name: 'Athi River', percentage: '34' },
     { lat: -1.359227, lng: 36.937984, name: 'Syokimau', percentage: '23' },
     { lat: -1.475289, lng:  36.96201, name: 'Kitengela', percentage: '45' },
   ]);
 
-  const [markerColors, setMarkerColors] = useState<string[]>([]); 
+  const [markerColors, setMarkerColors] = useState<string[]>([]);
 
   useEffect(() => {
     const updatedMarkerColors: string[] = leadPoisoningLocations.map((location) => {
       return getMarkerColor(location.percentage);
     });
-    setMarkerColors(updatedMarkerColors); 
+    setMarkerColors(updatedMarkerColors);
   }, [leadPoisoningLocations]);
 
   const getMarkerColor = (percentage: any): string => {
@@ -129,15 +129,15 @@ export default function NairobiMap() {
       <MapContainer center={[-1.286389, 36.817223]} zoom={13} style={{ height: '100%', width: '100%' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {leadPoisoningLocations.map((location, index) => {
+          const markerSize = 20 + parseInt(location.percentage, 10) * 0.4; 
+
           const icon = divIcon({
             className: 'custom-icon',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            html: `<div style="background-color: ${markerColors[index]}; width: 20px; height: 41px; border-radius:30px; border-bottom-left-radius: 5px; border-bottom-right-radius: 190px;"></div>`,
+            iconSize: [markerSize, markerSize * 2],
+            iconAnchor: [markerSize / 2, markerSize * 2],
+            html: `<div style="background-color: ${markerColors[index]}; width: ${markerSize}px; height: ${markerSize * 2}px; border-radius: 50%;"></div>`,
             popupAnchor: [0, -30],
           });
-
-          
 
           return (
             <Marker key={index} position={[location.lat, location.lng]} icon={icon}>
