@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+
 export default function NairobiMap() {
   const [leadPoisoningLocations, setLeadPoisoningLocations] = useState([
     { lat: -1.2400, lng: 36.7688, name: 'Kitisuru', Percentage: '10' },
