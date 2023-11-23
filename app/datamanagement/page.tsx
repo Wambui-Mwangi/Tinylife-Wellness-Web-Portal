@@ -34,7 +34,6 @@ function DataUpload() {
   const reversedFiles = [...files].reverse();
   const uniqueFileHashes = [...new Set(reversedFiles.map((file) => file.file_hash))];
 
-  // Filter out files with empty file_name
   const filesToDisplay = reversedFiles
     .filter((file) => file.file_name !== "")
     .slice(startIndex, endIndex);
@@ -155,8 +154,6 @@ function DataUpload() {
           <div className="mt-[70px] ml-30 upload-header ">
             
           <div className="bg-white shadow-md rounded-md border-green-500 mt-15 w-[120%] h-[100%] pl-[10%] pr-[10%] " style={{
-  // paddingLeft: '20px', /* Padding for the left side */
-  // paddingRight: '20px', /* Padding for the right side */
   boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
 }}>
             <h1 className="font-bold text-2xl">Upload Files</h1>

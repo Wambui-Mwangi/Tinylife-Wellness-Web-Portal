@@ -21,7 +21,7 @@ export default function NairobiMap() {
     { lat: -1.292471, lng: 36.736275, name: 'Riruta', Percentage: '54' },
     { lat: -1.271887, lng: 36.70381, name: 'Uthiru', Percentage: '12' },
     { lat: -1.2820, lng:  36.7140, name: 'Waithaka', Percentage: '34' },
-    { lat: -1.320853, lng: 36.684936, name: 'Karen', Percentage: '54' },
+    { lat: -1.320853, lng: 36.684936, name: 'Karen', Percentage: '24' },
     { lat: -1.3, lng: 36.81667, name: 'Nairobi West', Percentage: '12' },
     { lat: -1.317003, lng: 36.796653, name: 'Mugumu-ini', Percentage: '56' },
     { lat: -1.32423, lng: 36.827719, name: 'South C', Percentage: '12' },
@@ -58,7 +58,7 @@ export default function NairobiMap() {
     { lat: 1.2660, lng: 36.9219, name: 'Kayole North', percentage: '21' },
     { lat: -1.276162, lng: 36.913794, name: 'Kayole Central', percentage: '56' },
     { lat: -1.26746, lng: 36.91582, name: 'Kayole South', percentage: '45' },
-    { lat: -1.250562 , lng: 36.937984, name: 'Komarock', percentage: '34' },
+    { lat: -1.250562 , lng: 36.937984, name: 'Njiru', percentage: '34' },
     { lat: -1.2592, lng: 36.9236, name: 'Matopeni/Spring Valley', percentage: '23' },
     { lat: -1.27796, lng: 36.83526, name: 'Upper Savannah', percentage: '24' },
     { lat: -1.2820, lng: 36.83526, name: 'Lower Savannah', percentage: '34' },
@@ -70,7 +70,7 @@ export default function NairobiMap() {
     { lat: -1.2645912, lng: 36.895515, name: 'Mowlem', percentage: '35' },
     { lat:  -1.264884, lng: 36.892285, name: 'Kariobangi South', percentage: '35' },
     { lat: -1.2946400, lng: 36.8651600, name: 'Maringo/Hamza', percentage: '56' },
-    { lat: -1.3061, lng: 36.8627, name: 'Industrial Area', percentage: '32' },
+    { lat: -1.3061, lng: 36.8627, name: 'Industrial Area', percentage: '52' },
     { lat: -1.2891666, lng: 36.8239696, name: 'Harambee', percentage: '24' },
     { lat: -1.056954, lng: 37.107094, name: 'Makongeni', percentage: '24' },
     { lat: -1.2816645, lng: 36.8458837, name: 'Pumwani', percentage: '21' },
@@ -95,11 +95,11 @@ export default function NairobiMap() {
     { lat: -1.2997, lng: 36.9167, name: 'Embakasi East', percentage: '45' },
     { lat: -1.2800, lng: 36.9167, name: 'Embakasi North', percentage: '23' },
     { lat: -1.3000, lng: 36.9167, name: 'Embakasi South', percentage: '12' },
-    { lat: -1.28478, lng: 36.833774, name: 'Kamukunji', percentage: '13' },
+    { lat: -1.28478, lng: 36.833774, name: 'Kamukunji', percentage: '63' },
     { lat: -1.2959673, lng: 36.8724832, name: 'Makadara', percentage: '45' },
     { lat: -1.284457, lng: 36.824504, name: 'Starehe', percentage: '65' },
-    { lat: -1.268264, lng: 36.811121, name: 'Westlands', percentage: '27' },
-    { lat: -1.145703, lng: 36.964853, name: 'Ruiru', percentage: '19' },
+    { lat: -1.268264, lng: 36.811121, name: 'Westlands', percentage: '17' },
+    { lat: -1.145703, lng: 36.964853, name: 'Ruiru', percentage: '59' },
     { lat: -1.457725, lng: 36.978503, name: 'Athi River', percentage: '34' },
     { lat: -1.359227, lng: 36.937984, name: 'Syokimau', percentage: '23' },
     { lat: -1.475289, lng:  36.96201, name: 'Kitengela', percentage: '45' },
@@ -130,8 +130,10 @@ export default function NairobiMap() {
       <MapContainer center={[-1.286389, 36.817223]} zoom={13} style={{ height: '100%', width: '100%' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {leadPoisoningLocations.map((location, index) => {
-          const markerSize = 20 + parseInt(location.percentage, 10) * 0.4; 
-
+          const markerSize = location.percentage
+          ? 20 + parseInt(location.percentage, 10) * 0.2
+          : 20; 
+          // const markerSize = 20 + parseInt(location.percentage, 10) * 0.2; 
           const icon = divIcon({
             className: 'custom-icon',
             iconSize: [markerSize, markerSize * 2],
@@ -143,7 +145,7 @@ export default function NairobiMap() {
           return (
             <Marker key={index} position={[location.lat, location.lng]} icon={icon}>
               <Popup>
-                <div>
+                <div className='font-bold text-[19px] pt-[3%]'>
                   <h2>{location.name}</h2>
                   <p>Average Blood Lead Level: {location.percentage}%</p>
                 </div>
