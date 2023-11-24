@@ -12,6 +12,7 @@ export async function fetchLocationData() {
   }
 }
 
+
 export async function fetchPercentageData() {
   try {
     const response = await fetch('/response.json');
